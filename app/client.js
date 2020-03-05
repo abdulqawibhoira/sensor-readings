@@ -10,7 +10,7 @@ const client = MQTT.connect("mqtt://localhost:3333");
 const readData = () => {
 
 	const readLineInterface = readline.createInterface({
-		input: fs.createReadStream('./readings.txt')
+		input: fs.createReadStream('../readings.txt')
 	});
 
 	readLineInterface.on('line', async (line) => {
