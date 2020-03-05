@@ -1,0 +1,14 @@
+{
+  "name": "sensor_readings",
+  "version": "1.0.0",
+  "description": "Read from sensors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abdul Qawi Bhoira",
+  "license": "ISC",
+  "dependencies": {
+    "async-mqtt": "^2.5.0"
+  }
+}
