@@ -6,7 +6,7 @@ const unzipAsync = promisify(unzip);
 const client = MQTT.connect("mqtt://localhost:3333");
 
 const fetchReadings = async () => {
-    await client.subscribe("readings");
+    await client.subscribe("sensorReadings");
 
     client.on("message", async (topic, message) => {
         try {

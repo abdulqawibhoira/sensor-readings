@@ -1,27 +1,22 @@
-const MQTT = require("async-mqtt");
 const readline = require('readline');
 const fs = require('fs');
-const { promisify } = require('util');
-const { gzip } = require('zlib');
-const gzipAsync = promisify(gzip);
-
-const client = MQTT.connect("mqtt://localhost:3333");
+const queue = require("./lib/queue");
+const sendReadings = require("./lib/sendReadings");
 
 const readData = () => {
 
 	const readLineInterface = readline.createInterface({
-		input: fs.createReadStream('../readings.txt')
+		input: fs.createReadStream('../sensorReadings.txt')
 	});
 
-	readLineInterface.on('line', async (line) => {
-		try {
-			const buffer = await gzipAsync(line);
-			
-			await client.publish('readings', buffer);
+	const readingsQueue = new queue();
 
-		} catch (err) {
-			console.log(e.stack);
-		}
+	readLineInterface.on('line', (line) => {
+		readingsQueue.enqueue(line);
+	});
+
+	readLineInterface.on('close', () => {
+		sendReadings(readingsQueue);
 	});
 
 };
