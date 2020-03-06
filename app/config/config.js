@@ -7,6 +7,10 @@ const config = {
     STAGING: {
         readingsFilePath: `${__dirname}/../../sensorReadings.txt`,
         mqttBrokerURL: "mqtt://localhost:3333"
+    },
+    test: {
+        readingsFilePath: `${__dirname}/../../sensorReadings.txt`,
+        mqttBrokerURL: "mqtt://localhost:3333"
     }
 }
 
