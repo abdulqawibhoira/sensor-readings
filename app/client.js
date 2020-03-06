@@ -13,6 +13,8 @@ const readData = () => {
 	const readingsQueue = new queue();
 
 	readLineInterface.on('line', (line) => {
+		// adding readings into the queue to send them SEQUENTIALLY at random intervals
+
 		readingsQueue.enqueue(line);
 	});
 

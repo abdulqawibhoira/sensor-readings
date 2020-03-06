@@ -4,13 +4,12 @@
   "description": "Read from sensors",
   "main": "server.js",
   "jest": {
-    "verbose": true,
-    "moduleNameMapper": {
-      "Wconfig(.*)$": "<rootDir>/app/config/config"
-    }
+    "verbose": true
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "startServer": "node app/server.js",
+    "startClient": "node app/client.js"
   },
   "author": "Abdul Qawi Bhoira",
   "license": "ISC",

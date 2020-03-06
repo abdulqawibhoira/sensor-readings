@@ -11,6 +11,9 @@ const sendReadings = async function (queue) {
 
     while (item = queue.dequeue()) {
         try {
+            // waiting for a single message to publish to guarantee a sequence of the sensor-readings. 
+            // without await sequence will be compromised
+
             await publishMessage(item);
         }
         catch (err) {
@@ -20,6 +23,8 @@ const sendReadings = async function (queue) {
 };
 
 const publishMessage = async function (item) {
+    // setting timeout to send events at random intervals.
+
     await timeOutPromise();
 
     const buffer = await gzipAsync(item);
