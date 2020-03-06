@@ -30,7 +30,7 @@ describe("Implementation of queue", () => {
         expect(testQueue.data.length).toBe(1);
     });
 
-    test("dequeue - Check length ", () => {
+    test("dequeue - Empty Check ", () => {
         testQueue.dequeue();
 
         const item = testQueue.dequeue();
