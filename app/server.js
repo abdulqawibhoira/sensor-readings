@@ -6,6 +6,11 @@ const config = require("./config/config")();
 
 const client = MQTT.connect(config.mqttBrokerURL);
 
+client.on('error', (err) => {
+    console.log(err.stack);
+    process.exit();
+});
+
 const fetchReadings = async () => {
     await client.subscribe("sensorReadings");
 
