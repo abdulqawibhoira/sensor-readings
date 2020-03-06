@@ -2,8 +2,9 @@ const MQTT = require("async-mqtt");
 const { promisify } = require('util');
 const { gzip } = require('zlib');
 const gzipAsync = promisify(gzip);
+const config = require("../config/config")();
 
-const client = MQTT.connect("mqtt://localhost:3333");
+const client = MQTT.connect(config.mqttBrokerURL);
 
 const sendReadings = async function (queue) {
     let item = null;

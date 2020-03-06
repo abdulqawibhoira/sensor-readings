@@ -2,8 +2,9 @@ const MQTT = require("async-mqtt");
 const { promisify } = require('util');
 const { unzip } = require('zlib');
 const unzipAsync = promisify(unzip);
+const config = require("./config/config")();
 
-const client = MQTT.connect("mqtt://localhost:3333");
+const client = MQTT.connect(config.mqttBrokerURL);
 
 const fetchReadings = async () => {
     await client.subscribe("sensorReadings");
